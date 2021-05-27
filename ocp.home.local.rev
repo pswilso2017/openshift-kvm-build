@@ -1,0 +1,22 @@
+$TTL 86400
+@ IN SOA bastion-1.home.local. admin.home.local. (
+                                            2020011801 ;Serial
+                                            3600 ;Refresh
+                                            1800 ;Retry
+                                            604800 ;Expire
+                                            86400 ;Minimum TTL
+)
+;Name Server Information
+@ IN NS bastion-1.ocp.home.local.
+bastion-1     IN      A       192.168.87.139
+
+;Reverse lookup for Name Server
+139 IN PTR bastion-1.home.local.
+
+;PTR Record IP address to Hostname
+138     IN      PTR     control-1.ocp.home.local.
+137     IN      PTR     control-2.ocp.home.local.
+136     IN      PTR     control-3.ocp.home.local.
+135     IN      PTR     worker-1.ocp.home.local.
+134     IN      PTR     worker-2.ocp.home.local.
+133     IN      PTR     bootstrap.ocp.home.local.

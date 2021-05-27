@@ -1,0 +1,41 @@
+$TTL 86400
+@ IN SOA bastion-1.home.local. admin.home.local.(
+						2020021822 ;Serial
+						3600 ;Refresh
+						1800 ;Retry
+						604800 ;Expire
+						86400 ;Minimum TTL
+)
+
+;Name Server Information
+@ IN NS bastion-1.home.local.
+
+;IP Address for Name Server
+bastion-1 IN A 192.168.87.139
+
+;entry for bootstrap host.
+bootstrap.ocp IN A 192.168.87.133
+
+;entry of your load balancer
+haproxy IN A 192.168.87.139
+
+;entries for the master nodes
+control-1.ocp IN A 192.168.87.138
+control-2.ocp IN A 192.168.87.137
+control-3.ocp IN A 192.168.87.136
+
+;entry for the bastion host
+bastion IN A 192.168.87.139
+
+;entries for the worker nodes
+worker-1.ocp IN A 192.168.87.135
+worker-2.ocp IN A 192.168.87.134
+
+;The api identifies the IP of your load balancer.
+api.ocp.home.local. IN CNAME haproxy.home.local.
+api-int.ocp.home.local. IN CNAME haproxy.home.local.
+
+;The wildcard also identifies the load balancer.
+*.apps.ocp.home.local. IN CNAME haproxy.home.local.
+
+;EOF.
